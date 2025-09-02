@@ -6,6 +6,7 @@ public enum MarcaVeiculo {
     FIAT("Fiat"),
     CHEVROLET("Chevrolet"),
     VOLKSWAGEN("Volkswagen"),
+    RENAULT("Renault"),
     BYD("BYD"),
     BMW("BMW"),
     MERCEDES("Mercedes"),

@@ -4,7 +4,7 @@ public enum TipoVeiculo {
 
     CARRO("Carro"),
     MOTO("Moto"),
-    CAMINHAO("Caminhão"),
+    CAMINHÃO("Caminhão"),
     VAN("Van");
 
     private final String tipo;

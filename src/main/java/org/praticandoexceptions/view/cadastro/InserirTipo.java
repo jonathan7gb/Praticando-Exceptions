@@ -28,7 +28,6 @@ public class InserirTipo {
 
             }catch (TipoInvalidoException e){
                 System.err.println(e.getMessage());
-                tipoValido = false;
             }
 
         }while(!tipoValido);

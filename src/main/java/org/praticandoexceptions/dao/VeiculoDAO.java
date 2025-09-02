@@ -23,10 +23,10 @@ public class VeiculoDAO implements VeiculoInterfaceDAO{
 
             stmt.setString(1, veiculo.getCodigoVeiculo());
             stmt.setString(2, veiculo.getModeloVeiculo());
-            stmt.setObject(3, veiculo.getMarcaVeiculo());
+            stmt.setString(3, veiculo.getMarcaVeiculo().name());
             stmt.setInt(4, veiculo.getAnoVeiculo());
             stmt.setString(5, veiculo.getPlacaVeiculo());
-            stmt.setObject(6, veiculo.getTipoVeiculo());
+            stmt.setString(6, veiculo.getTipoVeiculo().name());
 
             stmt.executeUpdate();
 
