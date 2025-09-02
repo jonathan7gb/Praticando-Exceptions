@@ -7,11 +7,11 @@ public class Caminhao extends VeiculoAbstract {
 
     public Caminhao(){
         super();
-        this.tipoVeiculo = TipoVeiculo.CAMINHÃO;
+        this.tipoVeiculo = TipoVeiculo.CAMINHAO;
     }
 
     public Caminhao(CodigoValidate codigoVeiculo, String modeloVeiculo, MarcaVeiculo marcaVeiculo, int anoVeiculo, String placaVeiculo) {
-        super(codigoVeiculo, modeloVeiculo, marcaVeiculo, anoVeiculo, placaVeiculo, TipoVeiculo.CAMINHÃO);
+        super(codigoVeiculo, modeloVeiculo, marcaVeiculo, anoVeiculo, placaVeiculo, TipoVeiculo.CAMINHAO);
     }
 
     @Override
