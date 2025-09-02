@@ -2,6 +2,7 @@ package org.praticandoexceptions.view.cadastro;
 
 import org.praticandoexceptions.exceptions.TipoInvalidoException;
 import org.praticandoexceptions.model.domain.TipoValidate;
+import org.praticandoexceptions.model.enums.TipoVeiculo;
 
 import java.util.Scanner;
 
@@ -9,18 +10,21 @@ public class InserirTipo {
 
     Scanner scanner = new Scanner(System.in);
 
-    public String inserirTipo() throws TipoInvalidoException {
+    public TipoVeiculo inserirTipo() throws TipoInvalidoException {
         TipoValidate tipoValidate = new TipoValidate();
         boolean tipoValido = false;
-        String tipo = "";
+        TipoVeiculo tipoVeiculo = null;
+
 
         do{
 
             try{
-                System.out.println("- Tipo do Veículo ( Carro | Moto | Caminhão | Van ): ");
-                tipo = scanner.nextLine();
+                System.out.print("- Tipo do Veículo ( Carro | Moto | Caminhão | Van ): ");
+                String tipo = scanner.nextLine();
 
-                tipoValidate.validarTipo(tipo);
+                tipoVeiculo = tipoValidate.validarTipo(tipo);
+                tipoValido = true;
+
 
             }catch (TipoInvalidoException e){
                 System.err.println(e.getMessage());
@@ -29,7 +33,7 @@ public class InserirTipo {
 
         }while(!tipoValido);
 
-        return tipo;
+        return tipoVeiculo;
 
 
     }

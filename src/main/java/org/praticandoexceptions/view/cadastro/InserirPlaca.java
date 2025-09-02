@@ -16,7 +16,7 @@ public class InserirPlaca {
         do{
 
             try{
-                System.out.println("- Placa do veículo: ");
+                System.out.print("- Placa do veículo: ");
                 placa = scanner.nextLine();
 
                 placaValida = placaValidate.validarPlaca(placa);

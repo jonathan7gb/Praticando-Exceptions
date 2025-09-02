@@ -1,20 +1,19 @@
 package org.praticandoexceptions.model;
 
-import org.praticandoexceptions.model.domain.CodigoValidate;
 import org.praticandoexceptions.model.enums.MarcaVeiculo;
 import org.praticandoexceptions.model.enums.TipoVeiculo;
 import org.praticandoexceptions.model.interfaces.VeiculoInterface;
 
-public abstract class VeiculoAbstract implements VeiculoInterface {
+public class Veiculo implements VeiculoInterface {
 
-    protected CodigoValidate codigoVeiculo;
+    protected String codigoVeiculo;
     protected String modeloVeiculo;
     protected MarcaVeiculo marcaVeiculo;
     protected int anoVeiculo;
     protected String placaVeiculo;
     protected TipoVeiculo tipoVeiculo;
 
-    public VeiculoAbstract(){
+    public Veiculo(){
         this.codigoVeiculo = null;
         this.modeloVeiculo = "";
         this.marcaVeiculo = null;
@@ -23,7 +22,7 @@ public abstract class VeiculoAbstract implements VeiculoInterface {
         this.tipoVeiculo = null;
     }
 
-    public VeiculoAbstract(CodigoValidate codigoVeiculo, String modeloVeiculo, MarcaVeiculo marcaVeiculo, int anoVeiculo, String placaVeiculo, TipoVeiculo tipoVeiculo) {
+    public Veiculo(String codigoVeiculo, String modeloVeiculo, MarcaVeiculo marcaVeiculo, int anoVeiculo, String placaVeiculo, TipoVeiculo tipoVeiculo) {
         this.codigoVeiculo = codigoVeiculo;
         this.modeloVeiculo = modeloVeiculo;
         this.marcaVeiculo = marcaVeiculo;
@@ -32,11 +31,11 @@ public abstract class VeiculoAbstract implements VeiculoInterface {
         this.tipoVeiculo = tipoVeiculo;
     }
 
-    public CodigoValidate getCodigoVeiculo() {
+    public String getCodigoVeiculo() {
         return codigoVeiculo;
     }
 
-    public void setCodigoVeiculo(CodigoValidate codigoVeiculo) {
+    public void setCodigoVeiculo(String codigoVeiculo) {
         this.codigoVeiculo = codigoVeiculo;
     }
 
@@ -81,5 +80,7 @@ public abstract class VeiculoAbstract implements VeiculoInterface {
     }
 
     @Override
-    public abstract String toString();
+    public String toString(){
+        return "[" + codigoVeiculo + "] " + marcaVeiculo.getMarcaVeiculo() + " " + modeloVeiculo + " - " + anoVeiculo + " - " + placaVeiculo;
+    }
 }

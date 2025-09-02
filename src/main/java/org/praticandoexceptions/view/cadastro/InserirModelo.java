@@ -7,7 +7,7 @@ public class InserirModelo {
     Scanner scanner = new Scanner(System.in);
 
     public String inserirModelo() {
-        System.out.println("- Modelo do veículo: ");
+        System.out.print("- Modelo do veículo: ");
         String modelo = scanner.nextLine();
 
             if (modelo == null || modelo.trim().isEmpty()) {

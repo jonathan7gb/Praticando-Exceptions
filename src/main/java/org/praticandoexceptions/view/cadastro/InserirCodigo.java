@@ -17,7 +17,7 @@ public class InserirCodigo {
         do{
 
             try{
-                System.out.println("- Código do veículo: ");
+                System.out.print("- Código do veículo: ");
                 codigo = scanner.nextLine();
 
                 codigoValido = codigoValidate.validate(codigo);

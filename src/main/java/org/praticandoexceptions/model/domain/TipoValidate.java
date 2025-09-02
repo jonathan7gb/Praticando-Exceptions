@@ -1,10 +1,11 @@
 package org.praticandoexceptions.model.domain;
 
+import org.praticandoexceptions.exceptions.TipoInvalidoException;
 import org.praticandoexceptions.model.enums.TipoVeiculo;
 
 public class TipoValidate {
 
-    public TipoVeiculo validarTipo(String tipo) throws IllegalArgumentException{
+    public TipoVeiculo validarTipo(String tipo) throws TipoInvalidoException {
         if(tipo == null || tipo.trim().isEmpty()){
             throw new IllegalArgumentException("Tipo não pode ser nulo ou vazio");
         }

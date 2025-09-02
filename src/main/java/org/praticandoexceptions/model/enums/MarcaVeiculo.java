@@ -27,4 +27,8 @@ public enum MarcaVeiculo {
         this.marca = marca;
     }
 
+    public String getMarcaVeiculo(){
+        return this.marca;
+    }
+
 }

@@ -12,4 +12,8 @@ public enum TipoVeiculo {
     TipoVeiculo(String tipo){
         this.tipo = tipo;
     }
+
+    public String getTipoVeiculo(){
+        return this.tipo;
+    }
 }

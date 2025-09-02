@@ -1,10 +1,7 @@
 package org.praticandoexceptions.dao;
-import org.praticandoexceptions.model.VeiculoAbstract;
+import org.praticandoexceptions.model.Veiculo;
 
 public interface VeiculoInterfaceDAO {
 
-    void cadastrarVeiculo(VeiculoAbstract veiculo);
-    void excluirVeiculoPeloCodigo(String codigo);
-    void editarVeiculoPeloCodigo(String codigo);
-    VeiculoAbstract buscarVeiculoPeloCodigo(String codigo);
+    void cadastrarVeiculo(Veiculo veiculo);
 }

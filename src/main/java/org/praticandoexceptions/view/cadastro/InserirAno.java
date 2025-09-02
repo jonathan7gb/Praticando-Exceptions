@@ -7,10 +7,10 @@ public class InserirAno {
 
     public int inserirAno() {
 
-        System.out.println("- Ano do veículo: ");
+        System.out.print("- Ano do veículo: ");
         int ano = scanner.nextInt();
 
-        if (ano < 1886 || ano > 2024) {
+        if (ano < 1886 || ano > 2026) {
             throw new IllegalArgumentException("Ano inválido. Deve estar entre 1886 e 2024.");
         }
         return ano;
