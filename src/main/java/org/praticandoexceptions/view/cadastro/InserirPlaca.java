@@ -14,11 +14,13 @@ public class InserirPlaca {
         boolean placaValida = false;
 
         do{
+
             try{
                 System.out.println("- Placa do veículo: ");
                 placa = scanner.nextLine();
 
                 placaValida = placaValidate.validarPlaca(placa);
+
             }catch(PlacaInvalidaException e){
                 System.err.println(e.getMessage());
                 placaValida = false;

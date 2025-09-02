@@ -4,14 +4,6 @@ import org.praticandoexceptions.model.interfaces.CodigoInterface;
 
 public class CodigoValidate implements CodigoInterface {
 
-    private String codigo;
-
-    public CodigoValidate(String codigo) throws CodigoInvalidoException {
-        if (validate(codigo)) {
-            this.codigo = codigo;
-        }
-    }
-
     @Override
     public boolean validate(String codigo) throws CodigoInvalidoException {
         if (codigo == null || codigo.length() < 5 || codigo.length() > 15) {
