@@ -22,7 +22,7 @@ public enum MarcaVeiculo {
     YAMAHA("Yamaha"),
     SUZUKI("Suzuki");
 
-    private final String marca;
+    private String marca;
 
     MarcaVeiculo(String marca){
         this.marca = marca;
@@ -30,6 +30,10 @@ public enum MarcaVeiculo {
 
     public String getMarcaVeiculo(){
         return this.marca;
+    }
+
+    public void setMarcaVeiculo(String marca){
+        this.marca = marca;
     }
 
 }

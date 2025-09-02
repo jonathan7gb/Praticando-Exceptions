@@ -36,4 +36,37 @@ public class VeiculoDAO implements VeiculoInterfaceDAO{
             throw new RuntimeException("Erro ao inserir veículo: ", e);
         }
     }
+
+    public void editarVeiculoPelaPlacaOuCodigo(String placaOuCodigo, int opcao, String valorEditar){
+        String comando = "";
+        placaOuCodigo = "";
+        valorEditar = "";
+
+        switch (opcao){
+            case 1 -> {
+                comando = "UPDATE veiculos SET codigo = ? WHERE placa = ? OR codigo = ?";
+
+            }
+            case 2 ->{
+                comando = "UPDATE veiculos SET modelo = ? WHERE placa = ? OR codigo = ?";
+
+            }
+            case 3 ->{
+                comando = "UPDATE veiculos SET marca = ? WHERE placa = ? OR codigo = ?";
+
+            }
+            case 4 ->{
+                comando = "UPDATE veiculos SET anoVeiculo = ? WHERE placa = ? OR codigo = ?";
+
+            }
+            case 5 ->{
+                comando = "UPDATE veiculos SET placa = ? WHERE placa = ? OR codigo = ?";
+
+            }
+            case 6 ->{
+                comando = "UPDATE veiculos SET tipoVeiculo = ? WHERE placa = ? OR codigo = ?";
+
+            }
+        }
+    }
 }

@@ -7,7 +7,7 @@ public enum TipoVeiculo {
     CAMINHÃO("Caminhão"),
     VAN("Van");
 
-    private final String tipo;
+    private String tipo;
 
     TipoVeiculo(String tipo){
         this.tipo = tipo;
@@ -15,5 +15,9 @@ public enum TipoVeiculo {
 
     public String getTipoVeiculo(){
         return this.tipo;
+    }
+
+    public void setTipoVeiculo(String tipo){
+        this.tipo = tipo;
     }
 }

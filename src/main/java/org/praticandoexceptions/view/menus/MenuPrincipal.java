@@ -1,14 +1,15 @@
 package org.praticandoexceptions.view.menus;
 
+import org.praticandoexceptions.view.InputUsuario;
+
 import java.util.Scanner;
 
 public class MenuPrincipal {
 
     Scanner scanner = new Scanner(System.in);
+    InputUsuario inputUsuario = new InputUsuario();
 
     public int MenuPrincipal(){
-        boolean valido = false;
-        int opcao = 0;
 
         System.out.println("|| ===== GERENCIADOR DE VEÍCULOS ===== ||");
         System.out.println("|| 1 - Cadastrar Veículo               ||");
@@ -17,18 +18,7 @@ public class MenuPrincipal {
         //System.out.println("|| 4 - Editar Veículo               ||");
         System.out.println("|| =================================== ||");
 
-        do{
-            System.out.print("|| ? - Sua escolha: ");
-            String opcaoInput = scanner.nextLine();
-
-            try{
-                opcao = Integer.parseInt(opcaoInput);
-                valido = true;
-            }catch (NumberFormatException e){
-                System.out.println("Erro! Digite apenas números inteiros!\n");
-            }
-        }while(!valido);
-
+        int opcao = inputUsuario.inputUsuario();
         return opcao;
     }
 }
