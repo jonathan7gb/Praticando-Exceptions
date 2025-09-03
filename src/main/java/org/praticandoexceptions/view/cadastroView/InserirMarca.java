@@ -1,4 +1,4 @@
-package org.praticandoexceptions.view.cadastro;
+package org.praticandoexceptions.view.cadastroView;
 
 import org.praticandoexceptions.exceptions.MarcaInvalidaException;
 import org.praticandoexceptions.model.domain.MarcaValidate;

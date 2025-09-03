@@ -7,6 +7,7 @@ public enum MarcaVeiculo {
     CHEVROLET("Chevrolet"),
     VOLKSWAGEN("Volkswagen"),
     RENAULT("Renault"),
+    JEEP("Jeep"),
     BYD("BYD"),
     BMW("BMW"),
     MERCEDES("Mercedes"),

@@ -1,7 +1,7 @@
-package org.praticandoexceptions.view.menus;
+package org.praticandoexceptions.view.menusView;
 
 import org.praticandoexceptions.view.InputUsuario;
-import org.praticandoexceptions.view.headers.EditarVeiculoHeader;
+import org.praticandoexceptions.view.headersView.EditarVeiculoHeader;
 
 public class MenuEditar {
 

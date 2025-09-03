@@ -1,4 +1,4 @@
-package org.praticandoexceptions.view.cadastro;
+package org.praticandoexceptions.view.cadastroView;
 import java.util.Scanner;
 
 public class InserirAno {

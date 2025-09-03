@@ -30,7 +30,7 @@ public class VeiculoDAO implements VeiculoInterfaceDAO{
 
             stmt.executeUpdate();
 
-            System.out.println("Veículo Inserido com Sucesso!");
+            System.out.println("\n|| ==== Veículo Inserido com Sucesso! ==== ||\n");
 
         }catch (SQLException e) {
             throw new RuntimeException("Erro ao inserir veículo: ", e);

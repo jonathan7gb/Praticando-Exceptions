@@ -1,4 +1,4 @@
-package org.praticandoexceptions.view.menus;
+package org.praticandoexceptions.view.menusView;
 
 import org.praticandoexceptions.view.InputUsuario;
 
@@ -14,6 +14,7 @@ public class MenuPrincipal {
         System.out.println("|| ===== GERENCIADOR DE VEÍCULOS ===== ||");
         System.out.println("|| 1 - Cadastrar Veículo               ||");
         System.out.println("|| 2 - Listar Veículos                 ||");
+        System.out.println("|| 0 - Sair do Sistema                 ||");
         //System.out.println("|| 3 - Excluir Veículo               ||");
         //System.out.println("|| 4 - Editar Veículo               ||");
         System.out.println("|| =================================== ||");

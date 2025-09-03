@@ -14,11 +14,11 @@ public class PlacaValidate implements PlacaInterface {
             String numeros = placa.substring(3, 7);
 
             if (!letras.chars().allMatch(Character::isLetter)) {
-                throw new PlacaInvalidaException("Placa inválida: os três primeiros caracteres devem ser letras.");
+                throw new PlacaInvalidaException("Placa inválida: os três primeiros caracteres devem ser letras. (ex: ABC1234)");
             }
 
             if (!numeros.chars().allMatch(Character::isDigit)) {
-                throw new PlacaInvalidaException("Placa inválida: os quatro últimos caracteres devem ser números.");
+                throw new PlacaInvalidaException("Placa inválida: os quatro últimos caracteres devem ser números. (ex: ABC1234)");
             }
 
             return true;

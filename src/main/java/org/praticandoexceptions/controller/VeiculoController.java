@@ -4,9 +4,9 @@ import org.praticandoexceptions.dao.VeiculoDAO;
 import org.praticandoexceptions.model.Veiculo;
 import org.praticandoexceptions.model.enums.MarcaVeiculo;
 import org.praticandoexceptions.model.enums.TipoVeiculo;
-import org.praticandoexceptions.view.cadastro.*;
-import org.praticandoexceptions.view.headers.CadastrarVeiculoHeader;
-import org.praticandoexceptions.view.headers.EditarVeiculoHeader;
+import org.praticandoexceptions.view.cadastroView.*;
+import org.praticandoexceptions.view.headersView.CadastrarVeiculoHeader;
+import org.praticandoexceptions.view.headersView.EditarVeiculoHeader;
 
 public class VeiculoController {
 
