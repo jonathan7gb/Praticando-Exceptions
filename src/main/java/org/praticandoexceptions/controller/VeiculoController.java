@@ -56,6 +56,7 @@ public class VeiculoController {
         int opcao = 0;
         String valorEditar = "";
         boolean achado = false;
+        String comandoEditar = "";
 
         InserirCodigo codigoInput = new InserirCodigo();
         InserirModelo modeloInput = new InserirModelo();
@@ -91,30 +92,32 @@ public class VeiculoController {
                 opcao = menuEditar.menuEditar(placaOuCodigo);
                 switch (opcao){
                     case 1 -> {
+                        editarVeiculoHeader.editarCodigoHeader();
+                        comandoEditar = "UPDATE veiculos SET codigo = ? WHERE placa = ? OR codigo = ?";
+                    }
+                    case 2 ->{
+                        editarVeiculoHeader.editarModeloHeader();
+                        comandoEditar = "UPDATE veiculos SET modelo = ? WHERE placa = ? OR codigo = ?";
+                    }
+                    case 3 ->{
+                        editarVeiculoHeader.editarMarcaHeader();
+                        comandoEditar = "UPDATE veiculos SET marca = ? WHERE placa = ? OR codigo = ?";
+                    }
+                    case 4 ->{
+                        editarVeiculoHeader.editarAnoHeader();
+                        comandoEditar = "UPDATE veiculos SET anoVeiculo = ? WHERE placa = ? OR codigo = ?";
 
                     }
-
-                    case 2 -> {
-
+                    case 5 ->{
+                        editarVeiculoHeader.editarPlacaHeader();
+                        comandoEditar = "UPDATE veiculos SET placa = ? WHERE placa = ? OR codigo = ?";
                     }
-
-                    case 3 -> {
-
-                    }
-
-                    case 4 -> {
-
-                    }
-
-                    case 5 -> {
-
-                    }
-
                     case 6 -> {
-
+                        editarVeiculoHeader.editarTipoHeader();
+                        comandoEditar = "UPDATE veiculos SET tipoVeiculo = ? WHERE placa = ? OR codigo = ?";
                     }
                     case 0 -> {
-
+                        System.out.println("");
                     }
                     default -> {
                         errors.inputInvalido();
@@ -122,7 +125,7 @@ public class VeiculoController {
                 }
             }while(opcao != 0);
 
-            veiculoDAO.editarVeiculoPelaPlacaOuCodigo(placaOuCodigo, opcao, valorEditar);
+            veiculoDAO.editarVeiculoPelaPlacaOuCodigo(placaOuCodigo, opcao, comandoEditar, valorEditar);
         }
 
 

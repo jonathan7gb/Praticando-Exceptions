@@ -37,8 +37,7 @@ public class VeiculoDAO implements VeiculoInterfaceDAO{
         }
     }
 
-    public void editarVeiculoPelaPlacaOuCodigo(String placaOuCodigo, int opcao, String valorEditar){
-        String comando = "";
+    public void editarVeiculoPelaPlacaOuCodigo(String placaOuCodigo, int opcao, String comando, String valorEditar){
         placaOuCodigo = "";
         valorEditar = "";
 
