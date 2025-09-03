@@ -71,8 +71,10 @@ public class VeiculoController {
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(comando)) {
 
-            int tuplasAfetadas = stmt.executeUpdate();
-           if(tuplasAfetadas > 0){
+            stmt.setString(1 , placaOuCodigo);
+            stmt.setString(2 , placaOuCodigo);
+            ResultSet rs =  stmt.executeQuery();
+           if(rs.next()){
                 achado = true;
            }else{
                System.out.println("|| ==== Veículo não encontrado ==== ||");
@@ -82,7 +84,7 @@ public class VeiculoController {
             System.out.println("Erro ao editar veículo: " + e);
         }
 
-        if(!achado){
+        if(achado == true){
             opcao = menuEditar.menuEditar(placaOuCodigo);
             switch (opcao){
                 case 1 -> {
