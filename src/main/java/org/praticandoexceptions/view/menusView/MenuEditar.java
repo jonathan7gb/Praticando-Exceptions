@@ -8,8 +8,8 @@ public class MenuEditar {
     EditarVeiculoHeader editarVeiculoHeader = new EditarVeiculoHeader();
     InputUsuario inputUsuario = new InputUsuario();
 
-    public int menuEditar(){
-        editarVeiculoHeader.editarVeiculoHeader();
+    public int menuEditar(String placaCodigo){
+        editarVeiculoHeader.editarVeiculoHeader(placaCodigo);
         System.out.println("|| 1 - Editar Código");
         System.out.println("|| 2 - Editar Modelo");
         System.out.println("|| 3 - Editar Marca");
