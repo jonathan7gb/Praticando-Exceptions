@@ -4,6 +4,7 @@ import org.praticandoexceptions.dao.VeiculoDAO;
 import org.praticandoexceptions.model.Veiculo;
 import org.praticandoexceptions.model.enums.MarcaVeiculo;
 import org.praticandoexceptions.model.enums.TipoVeiculo;
+import org.praticandoexceptions.view.Errors;
 import org.praticandoexceptions.view.InputUsuario;
 import org.praticandoexceptions.view.cadastroView.*;
 import org.praticandoexceptions.view.headersView.CadastrarVeiculoHeader;
@@ -64,9 +65,10 @@ public class VeiculoController {
         InserirTipo tipoInput  = new InserirTipo();
         InputUsuario inputUsuario = new InputUsuario();
         MenuEditar menuEditar = new MenuEditar();
+        Errors errors = new Errors();
 
         placaOuCodigo = inputUsuario.inputPlacaOuCodigo();
-        String comando = "SELECT codigo, placa FROM veiculos WHERE codigo = ? or placa = ?";
+        String comando = "SELECT codigo, placa FROM veiculos WHERE codigo = ? OR placa = ?";
 
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(comando)) {
@@ -77,7 +79,7 @@ public class VeiculoController {
            if(rs.next()){
                 achado = true;
            }else{
-               System.out.println("|| ==== Veículo não encontrado ==== ||");
+               errors.veiculoNaoEncontrado();
            }
 
         }catch(SQLException e){
@@ -85,32 +87,40 @@ public class VeiculoController {
         }
 
         if(achado == true){
-            opcao = menuEditar.menuEditar(placaOuCodigo);
-            switch (opcao){
-                case 1 -> {
+            do{
+                opcao = menuEditar.menuEditar(placaOuCodigo);
+                switch (opcao){
+                    case 1 -> {
 
+                    }
+
+                    case 2 -> {
+
+                    }
+
+                    case 3 -> {
+
+                    }
+
+                    case 4 -> {
+
+                    }
+
+                    case 5 -> {
+
+                    }
+
+                    case 6 -> {
+
+                    }
+                    case 0 -> {
+
+                    }
+                    default -> {
+                        errors.inputInvalido();
+                    }
                 }
-
-                case 2 -> {
-
-                }
-
-                case 3 -> {
-
-                }
-
-                case 4 -> {
-
-                }
-
-                case 5 -> {
-
-                }
-
-                case 6 -> {
-
-                }
-            }
+            }while(opcao != 0);
 
             veiculoDAO.editarVeiculoPelaPlacaOuCodigo(placaOuCodigo, opcao, valorEditar);
         }

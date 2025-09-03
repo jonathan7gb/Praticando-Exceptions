@@ -16,6 +16,7 @@ public class MenuEditar {
         System.out.println("|| 4 - Editar Ano");
         System.out.println("|| 5 - Editar Placa");
         System.out.println("|| 6 - Editar Tipo");
+        System.out.println("|| 0 - Voltar ao Menu Principal");
         System.out.println("|| =================================== ||");
 
         int opcao = inputUsuario.inputUsuario();

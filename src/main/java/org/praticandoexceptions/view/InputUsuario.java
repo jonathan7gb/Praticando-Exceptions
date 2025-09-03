@@ -25,7 +25,7 @@ public class InputUsuario {
     }
 
     public String inputPlacaOuCodigo(){
-        System.out.print("|| - Insira a placa ou o código do veículo: ");
+        System.out.print("\n|| - Insira a placa ou o código do veículo: ");
         String placaCodigo = scanner.nextLine();
 
         return placaCodigo;
