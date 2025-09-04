@@ -54,9 +54,9 @@ public class VeiculoController {
 
         String placaOuCodigo = "";
         int opcao = 0;
-        String valorEditar = "";
         boolean achado = false;
         String comandoEditar = "";
+        Object valorEditar = null;
 
         InserirCodigo codigoInput = new InserirCodigo();
         InserirModelo modeloInput = new InserirModelo();
@@ -93,27 +93,33 @@ public class VeiculoController {
                 switch (opcao){
                     case 1 -> {
                         editarVeiculoHeader.editarCodigoHeader();
+                        valorEditar = codigoInput.inserirCodigo();
                         comandoEditar = "UPDATE veiculos SET codigo = ? WHERE placa = ? OR codigo = ?";
                     }
                     case 2 ->{
                         editarVeiculoHeader.editarModeloHeader();
+                        valorEditar = modeloInput.inserirModelo();
                         comandoEditar = "UPDATE veiculos SET modelo = ? WHERE placa = ? OR codigo = ?";
                     }
                     case 3 ->{
                         editarVeiculoHeader.editarMarcaHeader();
+                        valorEditar = marcaInput.inserirMarca();
                         comandoEditar = "UPDATE veiculos SET marca = ? WHERE placa = ? OR codigo = ?";
                     }
                     case 4 ->{
                         editarVeiculoHeader.editarAnoHeader();
+                        valorEditar = anoInput.inserirAno();
                         comandoEditar = "UPDATE veiculos SET anoVeiculo = ? WHERE placa = ? OR codigo = ?";
 
                     }
                     case 5 ->{
                         editarVeiculoHeader.editarPlacaHeader();
+                        valorEditar = placaInput.inserirPlaca();
                         comandoEditar = "UPDATE veiculos SET placa = ? WHERE placa = ? OR codigo = ?";
                     }
                     case 6 -> {
                         editarVeiculoHeader.editarTipoHeader();
+                        valorEditar = tipoInput.inserirTipo();
                         comandoEditar = "UPDATE veiculos SET tipoVeiculo = ? WHERE placa = ? OR codigo = ?";
                     }
                     case 0 -> {
@@ -123,9 +129,12 @@ public class VeiculoController {
                         errors.inputInvalido();
                     }
                 }
+
+                if(opcao >= 1 || opcao <= 6){
+                    veiculoDAO.editarVeiculoPelaPlacaOuCodigo(placaOuCodigo, comandoEditar, valorEditar);
+                }
             }while(opcao != 0);
 
-            veiculoDAO.editarVeiculoPelaPlacaOuCodigo(placaOuCodigo, opcao, comandoEditar, valorEditar);
         }
 
 

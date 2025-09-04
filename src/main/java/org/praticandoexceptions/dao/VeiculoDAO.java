@@ -37,35 +37,27 @@ public class VeiculoDAO implements VeiculoInterfaceDAO{
         }
     }
 
-    public void editarVeiculoPelaPlacaOuCodigo(String placaOuCodigo, int opcao, String comando, String valorEditar){
-        placaOuCodigo = "";
-        valorEditar = "";
+    public void editarVeiculoPelaPlacaOuCodigo(String placaOuCodigo, String comando, Object valorEditar){
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(comando)) {
 
-        switch (opcao){
-            case 1 -> {
-                comando = "UPDATE veiculos SET codigo = ? WHERE placa = ? OR codigo = ?";
-
+            if (valorEditar instanceof Enum<?>) {
+                stmt.setString(1, ((Enum<?>) valorEditar).name());
+            } else {
+                stmt.setObject(1, valorEditar);
             }
-            case 2 ->{
-                comando = "UPDATE veiculos SET modelo = ? WHERE placa = ? OR codigo = ?";
+            stmt.setString(2, placaOuCodigo);
+            stmt.setString(3, placaOuCodigo);
 
-            }
-            case 3 ->{
-                comando = "UPDATE veiculos SET marca = ? WHERE placa = ? OR codigo = ?";
+            stmt.executeUpdate();
 
-            }
-            case 4 ->{
-                comando = "UPDATE veiculos SET anoVeiculo = ? WHERE placa = ? OR codigo = ?";
+            System.out.println("\n|| ==== Veículo Editado com Sucesso! ==== ||");
 
-            }
-            case 5 ->{
-                comando = "UPDATE veiculos SET placa = ? WHERE placa = ? OR codigo = ?";
-
-            }
-            case 6 ->{
-                comando = "UPDATE veiculos SET tipoVeiculo = ? WHERE placa = ? OR codigo = ?";
-
-            }
+        }catch (SQLException e) {
+            throw new RuntimeException("Erro ao editar veículo: ", e);
         }
+
+
+
     }
 }
