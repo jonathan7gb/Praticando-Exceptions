@@ -4,10 +4,13 @@ import org.praticandoexceptions.model.Veiculo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.praticandoexceptions.model.enums.MarcaVeiculo;
+import org.praticandoexceptions.model.enums.TipoVeiculo;
 import org.praticandoexceptions.repository.ConnectDatabase;
 
 public class VeiculoDAO implements VeiculoInterfaceDAO{
@@ -64,8 +67,35 @@ public class VeiculoDAO implements VeiculoInterfaceDAO{
 
     //---------------------------------------------------------------------------------------------
 
-    public List<Veiculo> listarVeiculos(){
+    public List<Veiculo> listarTodosVeiculos(){
         List<Veiculo> veiculos_list = new ArrayList<>();
+
+        String comando = "SELECT codigo, modelo, marca, anoVeiculo, placa, tipoVeiculo FROM veiculos";
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(comando)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+
+            while(!rs.next()){
+                String codigo = rs.getString("codigo");
+                String modelo = rs.getString("modelo");
+                String marcaStr = rs.getString("marca");
+                int ano = rs.getInt("anoVeiculo");
+                String placa = rs.getString("placa");
+                String tipoStr = rs.getString("tipoVeiculo");
+
+                MarcaVeiculo marca = MarcaVeiculo.fromString(marcaStr);
+                TipoVeiculo tipo = TipoVeiculo.fromString(tipoStr);
+
+                Veiculo veiculo = new Veiculo(codigo, modelo, marca, ano, placa, tipo);
+                veiculos_list.add(veiculo);
+            }
+
+        }catch (SQLException e) {
+            throw new RuntimeException("Erro ao listar todos os veículos: ", e);
+        }
 
         return veiculos_list;
     }

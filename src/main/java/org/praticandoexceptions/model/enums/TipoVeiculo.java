@@ -20,4 +20,13 @@ public enum TipoVeiculo {
     public void setTipoVeiculo(String tipo){
         this.tipo = tipo;
     }
+
+    public static TipoVeiculo fromString(String valor) {
+        for (TipoVeiculo m : TipoVeiculo.values()) {
+            if (m.getTipoVeiculo().equalsIgnoreCase(valor) || m.name().equalsIgnoreCase(valor)) {
+                return m;
+            }
+        }
+        throw new IllegalArgumentException("Tipo inválido: " + valor);
+    }
 }

@@ -18,8 +18,8 @@ public class ListarVeiculosHeader {
         System.out.println("\n|| ======== LISTAR POR TIPO ======== ||");
     }
 
-    public void buscarVeiculosNomeHeader(){
-        System.out.println("\n|| ======== BUSCAR PELO NOME ======== ||");
+    public void buscarVeiculosModeloHeader(){
+        System.out.println("\n|| ======== BUSCAR PELO MODELO ======== ||");
     }
 
     public void buscarVeiculosCodigoHeader(){

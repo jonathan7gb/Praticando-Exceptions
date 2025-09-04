@@ -31,7 +31,7 @@ public class SystemController {
                 }
                 default -> {
                     errors.inputInvalido();
-                    System.out.println("");
+                    System.out.println();
                 }
             }
         }while(opcao != 0);

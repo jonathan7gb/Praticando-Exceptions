@@ -37,4 +37,13 @@ public enum MarcaVeiculo {
         this.marca = marca;
     }
 
+    public static MarcaVeiculo fromString(String valor) {
+        for (MarcaVeiculo m : MarcaVeiculo.values()) {
+            if (m.getMarcaVeiculo().equalsIgnoreCase(valor) || m.name().equalsIgnoreCase(valor)) {
+                return m;
+            }
+        }
+        throw new IllegalArgumentException("Marca inválida: " + valor);
+    }
+
 }

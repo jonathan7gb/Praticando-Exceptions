@@ -14,6 +14,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.praticandoexceptions.repository.ConnectDatabase;
 import org.praticandoexceptions.view.headersView.ListarVeiculosHeader;
@@ -119,9 +121,11 @@ public class VeiculoController {
                         valorEditar = tipoInput.inserirTipo();
                         comandoEditar = "UPDATE veiculos SET tipoVeiculo = ? WHERE placa = ? OR codigo = ?";
                     }
+
                     case 0 -> {
                         System.out.println("");
                     }
+
                     default -> {
                         errors.inputInvalido();
                     }
@@ -148,6 +152,16 @@ public class VeiculoController {
             switch (opcao){
                 case 1 -> {
                     listarVeiculosHeader.listarVeiculosTodosHeader();
+                    List<Veiculo> veiculos_list = new ArrayList<>();
+                    veiculos_list = veiculoDAO.listarTodosVeiculos();
+
+                    System.out.println();
+                    for(Veiculo veiculo : veiculos_list){
+                        System.out.println(veiculo + " - " + veiculo.getTipoVeiculo());
+                        System.out.println("==========================================================");
+                    }
+
+                    System.out.println();
                 }
                 case 2 -> {
                     menuListar.menuListarPorTipo();
@@ -156,20 +170,18 @@ public class VeiculoController {
                     menuListar.menuListarPorMarca();
                 }
                 case 4 -> {
-
+                    menuListar.menuBuscarPeloModelo();
                 }
                 case 5 -> {
-
+                    menuListar.menuBuscarPelaPlaca();
                 }
                 case 6 -> {
+                    menuListar.menuBuscarPeloCodigo();
+                }
 
-                }
-                case 0 -> {
-                    System.out.println("");
-                }
-                default -> {
-                    errors.inputInvalido();
-                }
+                case 0 -> { System.out.println(); }
+
+                default -> { errors.inputInvalido(); }
             }
         }while(opcao != 0);
     }
