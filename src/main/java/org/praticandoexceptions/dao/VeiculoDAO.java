@@ -5,6 +5,8 @@ import org.praticandoexceptions.model.Veiculo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.praticandoexceptions.repository.ConnectDatabase;
 
@@ -37,6 +39,8 @@ public class VeiculoDAO implements VeiculoInterfaceDAO{
         }
     }
 
+    //---------------------------------------------------------------------------------------------
+
     public void editarVeiculoPelaPlacaOuCodigo(String placaOuCodigo, String comando, Object valorEditar){
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(comando)) {
@@ -56,8 +60,13 @@ public class VeiculoDAO implements VeiculoInterfaceDAO{
         }catch (SQLException e) {
             throw new RuntimeException("Erro ao editar veículo: ", e);
         }
+    }
 
+    //---------------------------------------------------------------------------------------------
 
+    public List<Veiculo> listarVeiculos(){
+        List<Veiculo> veiculos_list = new ArrayList<>();
 
+        return veiculos_list;
     }
 }

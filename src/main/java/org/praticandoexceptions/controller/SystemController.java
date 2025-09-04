@@ -21,6 +21,9 @@ public class SystemController {
                     veiculoController.cadastrarVeiculo();
                 }
                 case 2 -> {
+                    veiculoController.listarVeiculos();
+                }
+                case 3 -> {
                     veiculoController.editarVeiculo();
                 }
                 case 0 -> {

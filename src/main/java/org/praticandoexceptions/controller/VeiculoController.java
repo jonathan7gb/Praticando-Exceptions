@@ -16,13 +16,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.praticandoexceptions.repository.ConnectDatabase;
+import org.praticandoexceptions.view.headersView.ListarVeiculosHeader;
 import org.praticandoexceptions.view.menusView.MenuEditar;
+import org.praticandoexceptions.view.menusView.MenuListar;
 
 public class VeiculoController {
 
     private VeiculoDAO veiculoDAO = new VeiculoDAO();
     private CadastrarVeiculoHeader cadastrarVeiculoHeader = new CadastrarVeiculoHeader();
     private EditarVeiculoHeader editarVeiculoHeader = new EditarVeiculoHeader();
+    private ListarVeiculosHeader listarVeiculosHeader = new ListarVeiculosHeader();
+    private InserirCodigo codigoInput = new InserirCodigo();
+    private InserirModelo modeloInput = new InserirModelo();
+    private InserirMarca marcaInput = new InserirMarca();
+    private InserirAno anoInput = new InserirAno();
+    private InserirPlaca placaInput = new InserirPlaca();
+    private InserirTipo tipoInput  = new InserirTipo();
+    private InputUsuario inputUsuario = new InputUsuario();
+    private Errors errors = new Errors();
+    private MenuEditar menuEditar = new MenuEditar();
+    private MenuListar menuListar = new MenuListar();
+
 
     private Connection getConnection() throws SQLException {
         return ConnectDatabase.connect();
@@ -30,13 +44,6 @@ public class VeiculoController {
 
     public void cadastrarVeiculo(){
         cadastrarVeiculoHeader.cadastrarVeiculoHeader();
-
-        InserirCodigo codigoInput = new InserirCodigo();
-        InserirModelo modeloInput = new InserirModelo();
-        InserirMarca marcaInput = new InserirMarca();
-        InserirAno anoInput = new InserirAno();
-        InserirPlaca placaInput = new InserirPlaca();
-        InserirTipo tipoInput    = new InserirTipo();
 
         String codigo = codigoInput.inserirCodigo();
         String modelo = modeloInput.inserirModelo();
@@ -57,16 +64,6 @@ public class VeiculoController {
         boolean achado = false;
         String comandoEditar = "";
         Object valorEditar = null;
-
-        InserirCodigo codigoInput = new InserirCodigo();
-        InserirModelo modeloInput = new InserirModelo();
-        InserirMarca marcaInput = new InserirMarca();
-        InserirAno anoInput = new InserirAno();
-        InserirPlaca placaInput = new InserirPlaca();
-        InserirTipo tipoInput  = new InserirTipo();
-        InputUsuario inputUsuario = new InputUsuario();
-        MenuEditar menuEditar = new MenuEditar();
-        Errors errors = new Errors();
 
         placaOuCodigo = inputUsuario.inputPlacaOuCodigo();
         String comando = "SELECT codigo, placa FROM veiculos WHERE codigo = ? OR placa = ?";
@@ -138,6 +135,43 @@ public class VeiculoController {
         }
 
 
-
     }
+
+    //---------------------------------------------------------------------------------------------
+
+    public void listarVeiculos(){
+        int opcao = -1;
+
+        do{
+            opcao = menuListar.menuListar();
+
+            switch (opcao){
+                case 1 -> {
+                    listarVeiculosHeader.listarVeiculosTodosHeader();
+                }
+                case 2 -> {
+                    menuListar.menuListarPorTipo();
+                }
+                case 3 -> {
+                    menuListar.menuListarPorMarca();
+                }
+                case 4 -> {
+
+                }
+                case 5 -> {
+
+                }
+                case 6 -> {
+
+                }
+                case 0 -> {
+                    System.out.println("");
+                }
+                default -> {
+                    errors.inputInvalido();
+                }
+            }
+        }while(opcao != 0);
+    }
+
 }

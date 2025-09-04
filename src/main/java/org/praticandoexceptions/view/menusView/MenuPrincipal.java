@@ -13,10 +13,10 @@ public class MenuPrincipal {
 
         System.out.println("|| ===== GERENCIADOR DE VEÍCULOS ===== ||");
         System.out.println("|| 1 - Cadastrar Veículo               ||");
-        System.out.println("|| 2 - Editar Veículo                 ||");
+        System.out.println("|| 2 - Listar Veículos                 ||");
+        System.out.println("|| 3 - Editar Veículo                  ||");
         System.out.println("|| 0 - Sair do Sistema                 ||");
-        //System.out.println("|| 3 - Listar Veículo               ||");
-        //System.out.println("|| 4 - Excluir Veículo               ||");
+        //System.out.println("|| 4 - Excluir Veículo                 ||");
         System.out.println("|| =================================== ||");
 
         int opcao = inputUsuario.inputUsuario();
