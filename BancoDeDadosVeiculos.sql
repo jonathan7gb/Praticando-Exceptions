@@ -12,3 +12,4 @@ create table veiculos(
 
 select * from veiculos;
 describe veiculos;
+truncate veiculos;

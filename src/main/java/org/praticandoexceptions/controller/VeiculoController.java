@@ -149,10 +149,11 @@ public class VeiculoController {
         do{
             opcao = menuListar.menuListar();
 
+            List<Veiculo> veiculos_list = new ArrayList<>();
+
             switch (opcao){
                 case 1 -> {
                     listarVeiculosHeader.listarVeiculosTodosHeader();
-                    List<Veiculo> veiculos_list = new ArrayList<>();
                     veiculos_list = veiculoDAO.listarTodosVeiculos();
 
                     System.out.println();
@@ -164,19 +165,89 @@ public class VeiculoController {
                     System.out.println();
                 }
                 case 2 -> {
-                    menuListar.menuListarPorTipo();
+                    int opcaoTipo = menuListar.menuListarPorTipo();
+                    TipoVeiculo tipo = null;
+                    switch (opcaoTipo){
+                        case 1 -> tipo = TipoVeiculo.CARRO;
+                        case 2 -> tipo = TipoVeiculo.MOTO;
+                        case 3 -> tipo = TipoVeiculo.CAMINHÃO;
+                        case 4 -> tipo = TipoVeiculo.VAN;
+                        case 0 -> { System.out.println(); }
+                        default -> { errors.inputInvalido(); }
+                    }
+                    veiculos_list = veiculoDAO.listarVeiculosTipo(tipo);
+
+                    System.out.println();
+                    if(veiculos_list.isEmpty()){
+                        System.out.println("|| ==== Nenhum veículo do tipo " + tipo + " encontrado! ==== ||");
+                        break;
+                    }else{
+                        for(Veiculo veiculo : veiculos_list){
+                            System.out.println(veiculo + " - " + veiculo.getTipoVeiculo());
+                            System.out.println("==========================================================");
+                        }
+                    }
                 }
                 case 3 -> {
-                    menuListar.menuListarPorMarca();
+                    MarcaVeiculo marcaVeiculo = menuListar.menuListarPorMarca();
+                    veiculos_list = veiculoDAO.listarVeiculosMarca(marcaVeiculo);
+
+                    System.out.println();
+                    if(veiculos_list.isEmpty()){
+                        System.out.println("|| ==== Nenhum veículo da marca " + marcaVeiculo + " encontrado! ==== ||");
+                        break;
+                    }else{
+                        for(Veiculo veiculo : veiculos_list){
+                            System.out.println(veiculo + " - " + veiculo.getTipoVeiculo());
+                            System.out.println("==========================================================");
+                        }
+                    }
                 }
                 case 4 -> {
-                    menuListar.menuBuscarPeloModelo();
+                    String modelo = menuListar.menuBuscarPeloModelo();
+                    veiculos_list = veiculoDAO.listarVeiculosBuscaModelo(modelo);
+                    System.out.println();
+
+                    if(veiculos_list.isEmpty()){
+                        System.out.println("\n|| ==== Nenhum veículo com o modelo " + modelo + " encontrado! ==== ||");
+                        break;
+                    }else {
+                        for (Veiculo veiculo : veiculos_list) {
+                            System.out.println(veiculo + " - " + veiculo.getTipoVeiculo());
+                            System.out.println("==========================================================");
+                        }
+                    }
+
                 }
                 case 5 -> {
-                    menuListar.menuBuscarPelaPlaca();
+                    String placa = menuListar.menuBuscarPelaPlaca();
+                    veiculos_list = veiculoDAO.listarVeiculosBuscaPlaca(placa);
+                    System.out.println();
+
+                    if(veiculos_list.isEmpty()){
+                        System.out.println("|| ==== Nenhum veículo com a placa " + placa + " encontrado! ==== ||");
+                        break;
+                    }else {
+                        for (Veiculo veiculo : veiculos_list) {
+                            System.out.println(veiculo + " - " + veiculo.getTipoVeiculo());
+                            System.out.println("==========================================================");
+                        }
+                    }
                 }
                 case 6 -> {
-                    menuListar.menuBuscarPeloCodigo();
+                    String codigo = menuListar.menuBuscarPeloCodigo();
+                    veiculos_list = veiculoDAO.listarVeiculosBuscaCodigo(codigo);
+                    System.out.println();
+
+                    if(veiculos_list.isEmpty()){
+                        System.out.println("|| ==== Nenhum veículo com o código " + codigo + " encontrado! ==== ||");
+                        break;
+                    }else {
+                        for (Veiculo veiculo : veiculos_list) {
+                            System.out.println(veiculo + " - " + veiculo.getTipoVeiculo());
+                            System.out.println("==========================================================");
+                        }
+                    }
                 }
 
                 case 0 -> { System.out.println(); }
